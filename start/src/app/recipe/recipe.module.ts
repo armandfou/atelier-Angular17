@@ -7,15 +7,16 @@ import { RecipeRoutingModule } from './recipe-routing.module';
 import { V1Component } from './recipe/v1/v1.component';
 import { V2Component } from './recipe/v2/v2.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatStepperModule } from '@angular/material/stepper';
 import { NgOptimizedImage } from '@angular/common';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { IdeasComponent } from './ideas/ideas.component';
-
+import { RouterModule } from '@angular/router';
+import { routes } from './recipe-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,9 +26,13 @@ import { IdeasComponent } from './ideas/ideas.component';
     V1Component,
     V2Component,
     ShoppingListComponent,
-    IdeasComponent
+    IdeasComponent,
   ],
   imports: [
+    RouterModule.forRoot(routes, {
+      bindToComponentInputs: true,
+    }),
+
     CommonModule,
     RecipeRoutingModule,
     ReactiveFormsModule,
@@ -37,7 +42,7 @@ import { IdeasComponent } from './ideas/ideas.component';
     MatSelectModule,
     MatInputModule,
     MatStepperModule,
-    NgOptimizedImage
-  ]
+    NgOptimizedImage,
+  ],
 })
-export class RecipeModule { }
+export class RecipeModule {}

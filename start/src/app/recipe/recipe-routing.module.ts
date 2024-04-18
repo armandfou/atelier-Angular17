@@ -7,37 +7,45 @@ import { recipesResolver } from './resolvers/recipes.resolver';
 import { recipeResolver } from './resolvers/recipe.resolver';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
-    path: '', component: RecipeListComponent,
+    path: '',
+    component: RecipeListComponent,
     resolve: {
-      recipes: recipesResolver
-    }
+      recipes: recipesResolver,
+    },
   },
   {
-    path: ':id/edit', component: RecipeFormComponent, resolve: {
-      recipe: recipeResolver
-    }
+    path: ':id/edit',
+    component: RecipeFormComponent,
+    resolve: {
+      recipe: recipeResolver,
+    },
   },
   {
-    path: 'create', component: RecipeFormComponent
+    path: 'create',
+    component: RecipeFormComponent,
   },
   {
-    path: 'shopping', component: ShoppingListComponent
+    path: 'shopping',
+    component: ShoppingListComponent,
   },
   {
-    path: ':id', component: RecipeComponent, resolve: {
-      recipe: recipeResolver
-    }
+    path: ':id',
+    component: RecipeComponent,
+    resolve: {
+      recipe: recipeResolver,
+    },
   },
 
   {
-    path: '**', redirectTo: ''
-  }
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RecipeRoutingModule { }
+export class RecipeRoutingModule {}
